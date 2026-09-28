@@ -72,14 +72,8 @@ One row per sentence, 3,775 rows. Column names are in Italian.
 |---|---|
 | `ID` | identifier of the sentence |
 | `MWE`, `Frase` | the expression and the sentence |
-| `stato` | inflectional state: `canonica`, `inflessa contigua`, `discontinua`, or `n/d` |
+| `stato` | inflectional state: `canonica`, `inflessa contigua`, `discontinua` |
 | `clitico` | notes on clitics or pronouns inside or before the expression |
-
-`canonica` marks an occurrence in the citation form, `inflessa contigua` an occurrence whose
-components are inflected but adjacent, and `discontinua` one whose components are separated by
-intervening material. `n/d` marks the cases in which the expression is absent from the retrieved
-sentence or occurs with a literal reading, and these are excluded from the inflectional
-analysis. Of the verbal occurrences, 1,722 carry one of the three states.
 
 ## Scoring scale
 
