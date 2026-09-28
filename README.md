@@ -152,30 +152,8 @@ python analysis.py
 Both scripts expect the data files in `data/`. To keep everything in a single directory, set
 `DATA_DIR` to `pathlib.Path(".")` at the top of each script.
 
-## Inference settings
-
-The three models were run through Ollama with the library tags `llama3.3:70b`, `mistral:7b` and
-`gemma3:4b`, which provide 4-bit quantised builds (Q4_K_M). No decoding parameter was
-overridden, so each model ran under the configuration distributed with its tag. These
-configurations are not identical: LLaMA-3.3-70B and Mistral-7B inherit temperature 0.8, top-k 40
-and top-p 0.9, whereas Gemma-3-4B sets temperature 1.0, top-k 64 and top-p 0.95. The random seed
-was not fixed and the context window was the default one rather than the maximum supported by
-each model.
-
-## Limitations
-
-Decoding was stochastic and each sentence was processed once, so individual outputs are not
-exactly reproducible; re-running `run_models.py` will yield different answers at the item level,
-although the aggregate patterns rest on 3,775 items per model. The decoding parameters were not
-uniform across models, so the differences between them reflect the three systems as distributed
-rather than three systems under identical sampling conditions. Scoring and inflectional
-annotation were performed by a single annotator.
 
 ## Source of the sentences
 
 The sentences were retrieved from CORIS, a reference corpus of written Italian compiled at the
 University of Bologna, and are distributed here for research purposes only.
-
-## Citation
-
-Details will be added once the chapter is published.
