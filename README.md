@@ -66,14 +66,21 @@ only difference is that the `score` column is filled in.
 
 ### `inflection_annotation.xlsx`
 
-One row per sentence, 3,775 rows. Column names are in Italian.
+One row per sentence, 3,775 rows.
 
 | column | description |
 |---|---|
+| `n` | row number |
 | `ID` | identifier of the sentence |
-| `MWE`, `Frase` | the expression and the sentence |
-| `stato` | inflectional state: `canonica`, `inflessa contigua`, `discontinua` |
-| `clitico` | notes on clitics or pronouns inside or before the expression |
+| `MWE`, `Sentence` | the expression and the sentence |
+| `state` | inflectional state: `canonical`, `contiguous-inflected`, `discontinuous`, or `undetermined` |
+| `intervening_words` | number of words between the components (discontinuous occurrences only) |
+| `intervening_material` | the intervening words, as they appear in the sentence |
+| `material_type` | type of intervening material: `adverbial`, `pronoun`, `noun phrase`, `adjective`, `proper name`, `auxiliary/other`, `verb + adverbial`, `pronoun + adverbial` |
+
+`canonical` marks an occurrence in the citation form, `contiguous-inflected` an occurrence whose
+components are inflected but adjacent, and `discontinuous` one whose components are separated by
+intervening material.
 
 ## Scoring scale
 
@@ -104,13 +111,6 @@ restituendola nel formato:
 -- MWE: [espressione individuata]
 Frase: {sentence}
 ```
-
-The script saves a checkpoint every 25 responses in `checkpoints/` and skips the identifiers it
-has already processed, so an interrupted run can be resumed by launching it again. A failed
-request is recorded as `ERROR: ...` in `model_output` and does not stop the run.
-
-This script reproduces the querying procedure used in the study; it is not the file that was
-originally executed.
 
 ### `analysis.py`
 
